@@ -30,7 +30,7 @@ docker build -t yocto-tegra .
 
 #### Running the docker image
 ```bash
-docker run -it --name yocto-tegra-container yocto-tegra
+docker run -it --rm -v ./output:/output yocto-tegra
 ```
 
 ##### Building the bitbake image
@@ -50,10 +50,11 @@ Flashing the Image to SD Card
 
 Once the build is complete, the generated Yocto image can be flashed to an SD card. To do this, use the following command:
 
-bash
+```bash
 Copy code
 sudo dd if=path/to/your/image.img of=/dev/sdX bs=4M
 sync
+```
 Replace /dev/sdX with your actual SD card's device path. Be careful to select the correct device to avoid overwriting other data.
 
 Additional Notes
